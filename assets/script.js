@@ -12,10 +12,10 @@ const generateBtn = document.querySelector("#generate");
 
 let length;
 let checks = 0;
-const lowerArray = [];
-const upperArray = [];
-const numberArray = [];
-const specialArray = [];
+let lowerArray = [];
+let upperArray = [];
+let numberArray = [];
+let specialArray = [];
 let password = [];
 
 // Get length from text box
@@ -24,7 +24,8 @@ input.addEventListener('input', () => {
 });
 
 // Get lowercase array
-function getLowercase() {    
+function getLowercase(event) {    
+    lowerArray = [];
     if (lower.checked) {
         for (let i = 0; i < length; i++){
             lowerArray[i] = alpha[Math.floor(Math.random() * 26)]
@@ -34,10 +35,11 @@ function getLowercase() {
         return 0;
     }
 }
-// lower.addEventListener('click', getLowercase);
+lower.addEventListener('click', getLowercase);
 
 // Get upercase array
 function getUppercase() {
+    upperArray = [];
     if (upper.checked) {
         for (let i = 0; i < length; i++){
             upperArray[i] = alpha[Math.floor(Math.random() * 26)].toUpperCase()
@@ -47,10 +49,11 @@ function getUppercase() {
         return 0;
     }
 }
-// upper.addEventListener('change', getUppercase);
+upper.addEventListener('change', getUppercase);
 
 // Get number array
 function getNumber() {
+    numberArray = [];
     if (number.checked) {
         for (let i = 0; i < length; i++){
             numberArray[i] = Math.floor(Math.random() * 9);
@@ -60,10 +63,11 @@ function getNumber() {
         return 0;
     }
 }
-// number.addEventListener('click', getNumber) 
+number.addEventListener('click', getNumber) 
 
 // Get special character array
 function getSpecial() {
+    specialArray = [];
     if (special.checked) {
         for (let i = 0; i < length; i++){
             specialArray[i] = specialChar[Math.floor(Math.random() * 10)];
@@ -73,7 +77,7 @@ function getSpecial() {
         return 0;
     }
 }
-// special.addEventListener('change', getSpecial);
+special.addEventListener('change', getSpecial);
 
 // Function to get ALL arrays
 function getALL() {
@@ -92,7 +96,7 @@ function generatePassword() {
     }
     if (upper.checked) {
         checks++;       
-    } 
+    }
     if (number.checked) {
         checks++;
     }
